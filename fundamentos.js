@@ -173,3 +173,27 @@ console.log(enlaceYT)
 const {enlace} = web.redesSociales.youtube
 const {redesSociales} = web
 console.log(redesSociales.youtube.enlace)
+
+
+//promesas
+/*
+fetch ("https://rickandmortyapi.com/api/characters")
+.then ((res) => res.json())
+.then ((data)) => {
+  data.results.forEach((element) => {
+     console.log(element);
+  });
+};
+*/
+
+const obtenerPersonajes = async() => {
+  try {
+    const res = await fecth ("https://rickandmortyapi.com/api/characters");
+    const data = await res.json();const results = await data.results;
+    const personajesMujeres = results.filter(p => p.gender === 'Female');
+    console.log(personajesMujeres);
+  }catch (error){
+    console.log(error);
+  }
+};
+obtenerPersonajes();
